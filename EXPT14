@@ -1,0 +1,59 @@
+declare
+a number;
+b number;
+c number;
+begin
+a:=&amp;a;
+b:=&amp;b;
+if(b&gt;0)then
+c:=a/b;
+dbms_output.put_line(&#39;C is&#39;||c);
+else
+c:=a/b;
+end if;
+
+exception
+when zero_divide then
+dbms_output.put_line(&#39;Divide by zero error&#39;);
+end;
+
+
+
+OUTPUT:
+
+Enter value for a: 8
+Enter value for b: 4
+C is 2
+
+Enter value for a: 4
+Enter value for b: 0
+Divide by zero error
+
+
+
+
+
+
+Q2) PROGRAM:
+declare
+age number;
+inage exception;
+begin
+age:=&amp;age;
+if ((age&gt;=0) and (age&lt;200))then
+dbms_output.put_line(&#39;Your Age is:&#39;||age);
+else
+raise inage;
+end if;
+exception
+when inage then
+
+dbms_output.put_line(&#39;Invalid age error&#39;);
+end;
+
+OUTPUT:
+Enter value for age: 20
+Your Age is:20
+
+Enter value for age: 0
+Invalid age error
