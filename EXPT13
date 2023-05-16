@@ -1,0 +1,29 @@
+Declare
+num number(5);
+Begin
+update emp set sal = sal + sal*0.15 where deptno=20; if SQL%NOTFOUND then
+dbms_output.put_line('none of the salaries were updated');
+elsif SQL%FOUND then
+num := SQL%ROWCOUNT;
+dbms_output.put_line('salaries for ' || num || 'employees are updated'); end if;
+End;
+
+
+
+
+
+SQL> create table emp_grade(empno number, grade char(1)); Declare	Emp_rec emp%rowtype;
+Cursor c is select * into emp_rec from emp;
+Begin
+Open c;
+If c%ISOPEN then Loop
+Fetch c into emp_rec;
+If c%notfound then Exit; Endif; If emp_rec.sal <= 1400 then
+Insert into emp_grade values(emp_rec.empno,’C’); Elsif emp_rec.sal between 1401 and 2000 then
+Insert into emp_garde values(em_rec.empno,’B’); Else
+Insert into emp_garde values(em_rec.empno,’A’); Endif
+End loop;
+Else
+Open c;
+Endif;
+End;
